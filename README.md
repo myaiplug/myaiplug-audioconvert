@@ -4,7 +4,7 @@ High quality audio format converter with support for multiple formats and compre
 
 ## Features
 
-- 🎵 **Multiple Format Support**: Convert between MP3, WAV, OGG, FLAC, AAC, and M4A
+- 🎵 **Multiple Format Support**: Convert between MP3, WAV, OGG, FLAC, and M4A
 - ⚙️ **Flexible Options**: Control bitrate, sample rate, and channel configuration
 - 🖥️ **CLI Interface**: Easy-to-use command-line interface
 - 📊 **Audio Info**: Get detailed information about audio files
@@ -137,8 +137,7 @@ print(f"Sample Rate: {info['sample_rate']} Hz")
 | WAV    | .wav      | Waveform Audio File Format (uncompressed) |
 | OGG    | .ogg      | Ogg Vorbis (lossy compression) |
 | FLAC   | .flac     | Free Lossless Audio Codec |
-| AAC    | .aac      | Advanced Audio Coding (lossy compression) |
-| M4A    | .m4a      | MPEG-4 Audio (lossy compression) |
+| M4A    | .m4a      | MPEG-4 Audio with AAC codec (lossy compression) |
 
 ## Development
 

@@ -20,7 +20,7 @@ class TestAudioConverter:
     def test_supported_formats(self):
         """Test that all expected formats are supported"""
         converter = AudioConverter()
-        expected_formats = ['mp3', 'wav', 'ogg', 'flac', 'aac', 'm4a']
+        expected_formats = ['mp3', 'wav', 'ogg', 'flac', 'm4a']
         
         for fmt in expected_formats:
             assert fmt in converter.SUPPORTED_FORMATS

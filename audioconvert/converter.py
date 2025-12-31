@@ -18,12 +18,11 @@ class AudioConverter:
     """
     
     SUPPORTED_FORMATS = {
-        'mp3': {'extension': '.mp3', 'codec': 'libmp3lame'},
-        'wav': {'extension': '.wav', 'codec': 'pcm_s16le'},
-        'ogg': {'extension': '.ogg', 'codec': 'libvorbis'},
-        'flac': {'extension': '.flac', 'codec': 'flac'},
-        'aac': {'extension': '.aac', 'codec': 'aac'},
-        'm4a': {'extension': '.m4a', 'codec': 'aac'},
+        'mp3': {'extension': '.mp3', 'codec': 'libmp3lame', 'format': 'mp3'},
+        'wav': {'extension': '.wav', 'codec': 'pcm_s16le', 'format': 'wav'},
+        'ogg': {'extension': '.ogg', 'codec': 'libvorbis', 'format': 'ogg'},
+        'flac': {'extension': '.flac', 'codec': 'flac', 'format': 'flac'},
+        'm4a': {'extension': '.m4a', 'codec': 'aac', 'format': 'ipod'},  # ipod is the m4a/mp4 muxer
     }
     
     def __init__(self):
@@ -144,12 +143,17 @@ class AudioConverter:
                 audio = audio.set_channels(channels)
             
             # Export with format-specific parameters
-            export_params = {
-                'format': output_format,
-            }
+            export_params = {}
+            
+            # Use custom format name if specified (e.g., 'ipod' for m4a)
+            if output_format in self.SUPPORTED_FORMATS:
+                format_name = self.SUPPORTED_FORMATS[output_format].get('format', output_format)
+                export_params['format'] = format_name
+            else:
+                export_params['format'] = output_format
             
             # Add bitrate for compressed formats
-            if output_format in ['mp3', 'ogg', 'aac', 'm4a']:
+            if output_format in ['mp3', 'ogg', 'm4a']:
                 export_params['bitrate'] = bitrate
             
             # Add codec if available

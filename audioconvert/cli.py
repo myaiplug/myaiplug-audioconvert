@@ -29,7 +29,7 @@ def cli():
 @click.argument('output_file', type=click.Path())
 @click.option(
     '-f', '--format',
-    type=click.Choice(['mp3', 'wav', 'ogg', 'flac', 'aac', 'm4a'], case_sensitive=False),
+    type=click.Choice(['mp3', 'wav', 'ogg', 'flac', 'm4a'], case_sensitive=False),
     help='Output format (inferred from output filename if not specified)'
 )
 @click.option(
