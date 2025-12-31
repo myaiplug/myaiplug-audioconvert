@@ -93,9 +93,12 @@ class TestAudioConverter:
         """Test conversion with invalid channel count"""
         converter = AudioConverter()
         
-        # Create a dummy input file
-        input_file = tmp_path / "input.txt"
-        input_file.write_text("dummy")
+        # Create a valid audio file first
+        from pydub.generators import Sine
+        tone = Sine(440).to_audio_segment(duration=100)
+        input_file = tmp_path / "input.wav"
+        tone.export(str(input_file), format='wav')
+        
         output_file = tmp_path / "output.mp3"
         
         with pytest.raises(ValueError, match="Channels must be"):
