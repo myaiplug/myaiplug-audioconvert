@@ -3,13 +3,18 @@ Command-line interface for audio converter
 """
 
 import sys
+import logging
 import click
 from pathlib import Path
+from . import __version__
 from .converter import AudioConverter
+
+# Configure logging for CLI
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 @click.group()
-@click.version_option(version='0.1.0')
+@click.version_option(version=__version__)
 def cli():
     """
     MyAIPlug Audio Converter - High quality audio format converter

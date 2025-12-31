@@ -8,8 +8,7 @@ from pathlib import Path
 from typing import Optional, Union
 from pydub import AudioSegment
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Get logger without configuring it (let applications configure logging)
 logger = logging.getLogger(__name__)
 
 
